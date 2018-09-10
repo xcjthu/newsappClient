@@ -70,6 +70,11 @@ public class TCPClient implements Runnable{
         searchHandler = h;
     }
 
+    static MoreActivity.MyHandler moreHandler;
+    static public void setMoreHandler(MoreActivity.MyHandler h){
+        moreHandler = h;
+    }
+
     public void close(){
         isRun = false;
     }
@@ -151,7 +156,7 @@ public class TCPClient implements Runnable{
                     case '3':
                         Log.d("receive", "recommend news");
                         msg.what = 2;
-                        searchHandler.sendMessage(msg);
+                        moreHandler.sendMessage(msg);
                         break;
                 }
                 System.out.println(System.currentTimeMillis());

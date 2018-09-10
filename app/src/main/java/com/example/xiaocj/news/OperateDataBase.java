@@ -33,6 +33,12 @@ public class OperateDataBase {
     }
 
 
+    MoreActivity.MyHandler moreHander = null;
+    public void setMoreHander(MoreActivity.MyHandler moreHander){
+        this.moreHander = moreHander;
+    }
+
+
     static public OperateDataBase getInstance(){
         return instance;
     }
@@ -296,6 +302,32 @@ public class OperateDataBase {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                db.setTransactionSuccessful();
+                db.endTransaction();
+            }
+        }).start();
+    }
+
+    public void getLiked(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                db = mdb.getWritableDatabase();
+                db.beginTransaction();
+                Cursor cursor =  db.query(MySqliteDataBase.tableName, new String[]{"title", "id", "imgUrl", "url"}, "description is not null", new String[]{}, null, null, null);
+
+                List<Item> ans = new ArrayList<>();
+                if (cursor.getCount() >= 0){
+                    while (cursor.moveToNext()) {
+                        Item tmp = new Item(cursor.getString(0), cursor.getString(3), cursor.getInt(1), cursor.getString(2));
+                        ans.add(tmp);
+                    }
+                }
+                Message message = new Message();
+                message.what = 1;
+                message.obj = ans;
+                moreHander.sendMessage(message);
 
                 db.setTransactionSuccessful();
                 db.endTransaction();

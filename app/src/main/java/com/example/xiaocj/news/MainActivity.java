@@ -202,6 +202,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent1 = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent1);
                 break;
+            case R.id.login:
+                Intent intent2 = new Intent(MainActivity.this, MoreActivity.class);
+                startActivity(intent2);
+                break;
         }
         return true;
     }

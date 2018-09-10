@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">明日黄花</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="search">search</string>
+    <string name="comment">评论</string>
+    <string name="forward">分享</string>
+    <string name="login">登录</string>
+    <string name="channelManage">频道管理</string>
+    <string name="title_activity_settings">settings</string>
+    <string name="confirm">确认</string>
+    <string name="pleasechoose">请选择您想要接收的频道</string>
+    <string name="title_activity_search">SearchActivity</string>
+</resources>
